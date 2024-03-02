@@ -1,0 +1,40 @@
+---
+title: Content Security Policy (CSP)
+---
+
+A Content Security Policy (CSP) is an extra layer of security that helps detect and mitigate certain types of attacks by allowing website administrators to control resources the user agent is allowed to load.
+
+CSPs use directives to describe the policies for a certain resource type or policy area. The `monetization-src` directive allows you define which wallet address URLs can be loaded. If an attempt is made to load an undefined URL, a network error will occur and the URL will not load.
+
+## Enable and configure your policy
+
+To enable CSP, you must configure your web server to return the `Content-Security-Policy` HTTP header.
+
+Configuring CSP involves adding the header to each applicable web page and giving the header values to control which resources the user agent is allowed to load for that page.
+
+### Syntax
+
+The basic syntax is as follows, where `source` is a serialized source list. Multiple sources are allowed for `monetization-src` policies.
+
+```html
+Content-Security-Policy: monetization-src <source>;
+Content-Security-Policy: monetization-src <source>, <source>;
+```
+
+`<source>` can be any one of the values listed in the MDN Web Docs CSP Source Values page. (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/Sources#sources)
+
+## Example
+
+Your wallet address is `https://wallet.example.com/alice`. You’ve set up your CSP header like so:
+
+```html
+Content-Security-Policy: monetization-src https://wallet.example.com/alice;
+```
+
+A bad actor injects their wallet address into your site. 
+
+```html
+<link rel=”monetization” href=”https://example.test/dameon”>
+```
+
+Fetches for the monetization source above will return a network error and not load, because the wallet address URL does not match what you defined in your policy.

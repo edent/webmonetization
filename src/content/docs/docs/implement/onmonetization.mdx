@@ -1,0 +1,23 @@
+---
+title: onmonetization event handler
+---
+
+The `onmonetization` attribute of the `GlobalEventHandlers` mixin is used to process `monetization` events sent to the `Window`.
+
+`onmonetization` can be applied to any element and is used by the <mark>user agent</mark> to notify that some `<link>` element is monetized.
+
+## Syntax
+
+```js
+window.onmonetization = functionRef
+```
+
+## Example
+
+Show a visitor an alert box and message when a Web Monetization event is triggered.
+
+```js
+window.onmonetization = function () {
+  alert('This page supports Web Monetization.')
+}
+```

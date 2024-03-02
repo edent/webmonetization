@@ -1,0 +1,50 @@
+---
+title: Monetization <Link> Element
+---
+
+
+<p>Work this in: <mark>The link can be a document scoped link, meaning the link keeps a monetization session open while the document is alive. A monetization link can also be a monetized media link, which keeps the session open when the media control is active.</mark></p>
+
+
+
+Web Monetization extends the capabilities of the standard HTML `<link>` element so that the element supports `rel="monetization"`.
+
+To add Web Monetization to a site, you must add the Monetization `<link>` element to each page.
+
+* The `href` attribute equals your wallet address.
+* The `rel` attribute is always `monetization`.
+
+For example:
+
+`<link href=”https://wallet.example.com/alice” rel=”monetization”>`
+
+:::note
+The `<link>` element’s href attribute only supports wallet addresses in URL format. If you were assigned a wallet address that starts with `$`, replace it with `https://`. For example, `$wallet.example.com/alice` becomes `https://wallet.example.com/alice`. 
+:::
+
+## Interpreting the `<link>` element
+
+<mark>Since the `monetization` link type is not yet a standard (https://html.spec.whatwg.org/dev/links.html#linkTypes), web browsers don’t know what to do with it. This is one reason why site visitors need a WM extension.</mark>
+
+## Links in the `<body>`
+
+The `monetization` link type is `body-ok`, meaning the Monetization `<link>` element is allowed in the `<head>` and/or `<body>`.
+
+## Multiple Monetization links
+
+A single page can contain multiple Monetization `<link>` elements; however, it’s up to the visitor’s <mark>Web Monetization provider</mark> to decide how to split up payments. The Interledger WM extension splits the payment, <mark>regardless of it being a tip or a stream</mark>, equally between all wallet addresses on a page.
+
+## Monetizing media
+
+The `<video>`, `<audio>`, and `<picture>` elements allow you to embed media content within documents. You can web monetize these elements by adding the Monetization `<link>` element between the open and close tags. For example:
+
+```html
+<audio src=”music.mp3>
+    <link rel=”monetization” href=”https://wallet.example.com/bob”>
+</audio>
+```
+
+<mark>If the site visitor is streaming a payment, then… (does the media element have to be active/playing?</mark>
+
+<mark>If the site visitor tips, then…</mark>
+
