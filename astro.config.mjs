@@ -83,24 +83,6 @@ export default defineConfig({
               collapsed: true,
               items: [
                 {
-                  label: 'Web Monetization API',
-                  collapsed: true,
-                  items: [
-                    {
-                      label: 'Overview',
-                      link: '/docs/implement/wmapi',
-                    },   
-                    {
-                      label: 'Monetization interfaces',
-                      link: '/docs/implement/wmapi-interfaces',
-                    },                
-                    {
-                      label: 'Monetization events',
-                      link: '/docs/implement/events',
-                    },
-                  ],
-                },
-                {
                   label: 'Browser API',
                   collapsed: true,
                   items: [
@@ -111,6 +93,20 @@ export default defineConfig({
                     {
                       label: 'onmonetization event handler',
                       link: '/docs/implement/onmonetization',
+                    },
+                  ],
+                },
+                {
+                  label: 'Web Monetization API',
+                  collapsed: true,
+                  items: [ 
+                    {
+                      label: 'Monetization interfaces',
+                      link: '/docs/implement/wmapi-interfaces',
+                    },                
+                    {
+                      label: 'Monetization events',
+                      link: '/docs/implement/events',
                     },
                   ],
                 },

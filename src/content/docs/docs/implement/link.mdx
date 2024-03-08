@@ -2,41 +2,61 @@
 title: Monetization <Link> Element
 ---
 
-
-<p>Work this in: <mark>The link can be a document scoped link, meaning the link keeps a monetization session open while the document is alive. A monetization link can also be a monetized media link, which keeps the session open when the media control is active.</mark></p>
-
-
+import { LinkOut } from "@interledger/docs-design-system";
 
 Web Monetization extends the capabilities of the standard HTML `<link>` element so that the element supports `rel="monetization"`.
 
-To add Web Monetization to a site, you must add the Monetization `<link>` element to each page.
+Two components are required to web monetize a site:
+* A valid [wallet address](/docs/wallet/wallets)
+* The Monetization `<link>` element on each page you want to monetize
 
-* The `href` attribute equals your wallet address.
+## Monetization `<link>`
+
+### Syntax
+
+```html
+<link rel="monetization" href="https://(walletaddress)">
+```
+
 * The `rel` attribute is always `monetization`.
+* The `href` attribute equals your wallet address.
 
 For example:
 
-`<link href=”https://wallet.example.com/alice” rel=”monetization”>`
+```html
+<link rel="monetization" href="https://wallet.example.com/alice">
+```
 
 :::note
-The `<link>` element’s href attribute only supports wallet addresses in URL format. If you were assigned a wallet address that starts with `$`, replace it with `https://`. For example, `$wallet.example.com/alice` becomes `https://wallet.example.com/alice`. 
+The `href` attribute only supports wallet addresses in URL format. If you were assigned a wallet address that starts with `$`, replace it with `https://`. For example, `$wallet.example.com/alice` becomes `https://wallet.example.com/alice`. 
 :::
 
-## Interpreting the `<link>` element
+### How it works
 
-<mark>Since the `monetization` link type is not yet a standard (https://html.spec.whatwg.org/dev/links.html#linkTypes), web browsers don’t know what to do with it. This is one reason why site visitors need a WM extension.</mark>
+The `rel` attribute defines the relationship between a linked resource (your wallet address) and the current document. 
 
-## Links in the `<body>`
+Since the `monetization` link type isn't a <LinkOut href="https://html.spec.whatwg.org/dev/links.html#linkTypes">standard</LinkOut>, web browsers don't automatically know how to interpret it. This means your site visitors must either: 
+
+* Use a web browser that has the ability to interpret it built in
+* Install an extension that can interpret it
+
+## Link placement
 
 The `monetization` link type is `body-ok`, meaning the Monetization `<link>` element is allowed in the `<head>` and/or `<body>`.
 
-## Multiple Monetization links
+## Multiple links
 
 A single page can contain multiple Monetization `<link>` elements; however, it’s up to the visitor’s <mark>Web Monetization provider</mark> to decide how to split up payments. The Interledger WM extension splits the payment, <mark>regardless of it being a tip or a stream</mark>, equally between all wallet addresses on a page.
 
-## Monetizing media
+## Monetizing media 
 
-The `<video>`, `<audio>`, and `<picture>` elements allow you to embed media content within documents. You can web monetize these elements by adding the Monetization `<link>` element between the open and close tags. For example:
+The following elements can be web monetized by adding the Monetization `<link>` element between the open and close tags.
+
+* `<video>`
+* `<audio>`
+* `<picture>`
+
+For example:
 
 ```html
 <audio src=”music.mp3>
@@ -44,7 +64,6 @@ The `<video>`, `<audio>`, and `<picture>` elements allow you to embed media cont
 </audio>
 ```
 
-<mark>If the site visitor is streaming a payment, then… (does the media element have to be active/playing?</mark>
+<p><mark>If the site visitor is streaming a payment, then… (does the media element have to be active/playing?)</mark></p>
 
-<mark>If the site visitor tips, then…</mark>
-
+<p><mark>If the site visitor tips, then… (will the wallet defined for media receive a tip if it's not active/playing?)</mark></p>
