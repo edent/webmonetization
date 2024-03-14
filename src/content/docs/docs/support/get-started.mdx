@@ -1,25 +1,40 @@
 ---
 title: Support web monetized content
-banner:
-    content: |
-        Test banner!
-        <a href="/docs/">supports html, not markdown</a>
 next:
     label: Sending payments
 ---
 
+<p><mark>Need to add an overview or try to get rid of the overview in the table of contents</mark></p>
 
+## Quick start guide
 
-* How it works
-* What you need
+1. Sign up with a [digital wallet](/docs/wallet/wallets) that supports Web Monetization payments and get a wallet address.
+2. Download and install the <mark>Interledger Web Monetization extension</mark> or <mark> do the thing with Chromium</mark>.
+3. <mark>Configure...(assumption is that the "Support" section will have additional pages for configuration)</mark>
+4. <mark>Browse - Can we get a list of some good sites to start with?</mark>
 
-* Get a wallet
-* Get the extension
-* Configure the extension
-* Understand the payment mechanics
+## Benefits of Web Monetization
 
-What does Web Monetization give content supporters?
-* The ability to control whether to pay, how much to pay, and how often to pay
-* The ability to pay in their preferred currency
-* An easy way to stream and/or tip, once set up, without requiring the user to enter billing details for every transaction
-* A platform-agnostic way to support creators
+As a web monetized site visitor, you:
+* Control whether to pay, how much to pay, and how often to pay
+* Pay in your preferred currency
+* Can stream a payment and/or tip without entering your billing details on each site
+*  Have a platform-free and subscription-free way to support your favorite web monetized sites
+
+## How it works
+
+As you browse, your WM agent (e.g., extension, browser) checks each page for a Monetization `<link>` element. The `<link>` element contains the recipient's wallet address ([learn more](/docs/implement/link/)).
+
+When found, your WM agent begins communicating with the recipient's wallet and your wallet to set up the payment. This all happens behind the scenes and requires no interaction from you ([learn more](/docs/support/payments)).
+
+### Streaming payments
+
+You're required to set the amount and frequency of your payments as part of enabling streaming payments in your WM agent. For example $0.01 USD every five minutes. Your WM agent will use these details when setting up a payment. Since the WM agent has these details before you start browsing, it doesn't have to ask for your permission or for payment details each time you land on a web monetized site.
+
+<p><mark>Content above needs a link to config doc when available.</mark></p>
+
+### One-time payments (tips)
+
+Your WM agent allows you to send a one-time payment, such as a tip, to web monetized sites. One-time payments are not automatic. You must specify the amount to send in your WM agent when you are on the site you want to pay.
+
+<p><mark>Content above needs a link to config doc when available.</mark></p>

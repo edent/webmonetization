@@ -20,8 +20,12 @@ A wallet address is required for sending and receiving WM payments.
 
 ## Sending payments
 
-You must either install a [Web Monetization extension](/docs/support/get-started/) or configure [Chromium's About page](/docs/support/get-started/) to send WM payments. In either case, you're required to enter the wallet address assigned to you by your wallet provider. The underlying payment account is the account from which your payments are sent.
+You must either install a <mark>[Web Monetization extension](/docs/support/get-started/) or configure [Chromium's About page](/docs/support/get-started/)</mark> to send WM payments. In either case, you're required to enter the wallet address assigned to you by your wallet provider. The underlying payment account is the account from which your payments are sent.
 
 ## Receiving payments
 
 To web monetize a site, you must add a Monetization [`<link>`](/docs/implement/link) element to each page. The destination of the link (the `href`) must point to the wallet address assigned to you by your wallet provider. The underlying payment account is the account into which your payments are received.
+
+:::note[Underlying payment account]
+Your underlying payment account supports sending and receiving. If you're both a supporter and publisher of web monetized content, you can use the same wallet address in your <mark>extension/About page</mark> that you use in the Monetization `<link>` element on your website.
+:::
