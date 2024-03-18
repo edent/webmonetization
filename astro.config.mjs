@@ -26,10 +26,6 @@ export default defineConfig({
           label: 'English',
           lang: 'en',
         },
-        es: {
-          label: 'Español',
-          lang: 'es',
-        },
       },
       components: {
         Header: './src/components/docs/Header.astro',
@@ -61,8 +57,12 @@ export default defineConfig({
           collapsed: true,
           items: [
             {
-              label: 'Get started',
-              link: '/docs/support/get-started',
+              label: 'Overview',
+              link: '/docs/support/overview',
+            },
+            {
+              label: 'Quick start guide',
+              link: '/docs/support/quick-start-guide',
             },
             {
               label: 'Web Monetization payments',
@@ -77,6 +77,10 @@ export default defineConfig({
             {
               label: 'Overview',
               link: '/docs/implement/overview',
+            },
+            {
+              label: 'Quick start guide',
+              link: '/docs/implement/quick-start-guide',
             },
             {
               label: 'APIs',
@@ -127,6 +131,28 @@ export default defineConfig({
               ],
             },
             {
+              label: 'Guides',
+              collapsed: true,
+              items: [
+                {
+                  label: 'Provide Exclusive Content',
+                  link: '/docs/guides/provide-exclusive-content',
+                },
+                {
+                  label: 'Add a streaming payments counter',
+                  link: '/docs/guides/add-a-streaming-payments-counter',
+                },
+                {
+                  label: 'Remove ads',
+                  link: '/docs/guides/remove-ads',
+                },
+                {
+                  label: 'Set up probabilistic revenue sharing',
+                  link: '/docs/guides/set-up-probabilistic-revenue-sharing',
+                },
+              ],
+            },
+            {
               label: 'Community content',
               collapsed: true,
               items: [
@@ -137,32 +163,6 @@ export default defineConfig({
                 {
                   label: 'Plugins and integrations',
                   link: '/docs/resources/libraries',
-                },
-                {
-                  label: 'Guides',
-                  collapsed: true,
-                  items: [
-                    {
-                      label: 'Add Web Monetization to a page',
-                      link: '/docs/resources/monetize-page',
-                    },
-                    {
-                      label: 'Remove ads',
-                      link: '/docs/resources/remove-ads',
-                    },
-                    {
-                      label: 'Provide exclusive content',
-                      link: '/docs/resources/provide-exclusive-content',
-                    },
-                    {
-                      label: 'Add a streaming payments counter',
-                      link: '/docs/resources/add-a-streaming-payments-counter',
-                    },
-                    {
-                      label: 'Set up probabilistic revenue sharing',
-                      link: '/docs/resources/set-up-probabilistic-revenue-sharing',
-                    },
-                  ],
                 },
               ],
             },

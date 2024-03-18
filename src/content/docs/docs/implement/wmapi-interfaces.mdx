@@ -4,11 +4,15 @@ title: Monetization interfaces
 
 import { LinkOut } from "@interledger/docs-design-system";
 
-The Web Monetization API is made up of the `MonetizationEvent` and `MonetizationCurrencyAmount` interfaces. These interfaces expose the Web Monetization API and allow you to retrieve basic payment information.
+The Web Monetization API is made up of the following interfaces:
+* `MonetizationEvent`
+* `MonetizationCurrencyAmount`
+
+These interfaces expose the Web Monetization API and allow you to retrieve basic payment information.
 
 ## `MonetizationEvent` interface
 
-`MonetizationEvent` DOM events provide information about sent payments. 
+`MonetizationEvent` DOM events provide information about **sent** payments. 
 
 <table>
   <tbody>
@@ -27,7 +31,7 @@ The Web Monetization API is made up of the `MonetizationEvent` and `Monetization
   </tbody>
 </table>
 
-By listening for [`monetization`](/docs/implement/events) events, you can use the information returned by the attributes below to find out basic payment details.
+By listening for [`monetization`](/docs/implement/events) events, you can use the information returned by the following attributes to find out basic payment details.
 
 * `amountSent` - The amount sent, not received. The `MonetizationCurrencyAmount` constructs the value for this attribute.
 * `incomingPayment` - A URL representing an incoming payment that can be used to determine the amount received. 
