@@ -2,11 +2,16 @@
 title: Content Security Policy (CSP)
 ---
 
-import { LinkOut } from "@interledger/docs-design-system";
+import { LinkOut, Hidden } from "@interledger/docs-design-system";
+import Specification from '/src/components/docs/Specification.astro'
+import BrowserCompat from '/src/components/docs/BrowserCompat.astro'
+import data from '/src/data/browser-compat-data/csp-monetization-src.json'
 
 A Content Security Policy (CSP) is an extra layer of security that helps detect and mitigate certain types of attacks by allowing website administrators to control resources the user agent, such as a web browser, is allowed to load.
 
-CSPs use directives to describe the policies for a certain resource type or policy area. The `monetization-src` directive allows you define which wallet address URLs can be loaded. If an attempt is made to load an undefined URL, a network error will occur and the URL will not load.
+CSPs use directives to describe the policies for a certain resource type or policy area. 
+
+The `monetization-src` directive allows you define which wallet address URLs can be loaded. If an attempt is made to load an undefined URL, a network error will occur and the URL will not load.
 
 ## Enable and configure your policy
 
@@ -18,19 +23,21 @@ Configuring CSP involves adding the header to each applicable web page and givin
 
 The basic syntax is as follows. 
 
-```html
+```http
 Content-Security-Policy: monetization-src <source>;
 Content-Security-Policy: monetization-src <source>, <source>;
 ```
 
-#### source
-`<source>` is a serialized list and can be any one of the values listed in the <LinkOut href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/Sources#sources">MDN Web Docs CSP Source Values</LinkOut> page. Multiple sources are allowed for `monetization-src` policies.
+#### `source`
+`<source>` is a serialized list and can be any one of the values listed on the <LinkOut href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/Sources#sources">MDN Web Docs CSP Source Values</LinkOut> page. 
+
+Multiple sources are allowed for `monetization-src` policies.
 
 ## Example
 
 Your wallet address is `https://wallet.example.com/alice`. You’ve set up your CSP header like so:
 
-```html
+```http
 Content-Security-Policy: monetization-src https://wallet.example.com/alice;
 ```
 
@@ -41,3 +48,15 @@ A bad actor injects their wallet address into your site.
 ```
 
 Fetches for the monetization source above will return a network error and not load because the wallet address URL does not match what you defined in your policy.
+
+<Hidden>
+
+// ## Browser compatibility
+
+<BrowserCompat json={data} />
+
+</Hidden>
+
+## Specifications
+
+<Specification anchor='content-security-policy' />

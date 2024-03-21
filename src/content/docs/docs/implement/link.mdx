@@ -2,7 +2,10 @@
 title: Monetization <Link> Element
 ---
 
-import { LinkOut } from "@interledger/docs-design-system";
+import { LinkOut, Hidden } from "@interledger/docs-design-system";
+import Specification from '/src/components/docs/Specification.astro'
+import BrowserCompat from '/src/components/docs/BrowserCompat.astro'
+import data from '/src/data/browser-compat-data/link.json'
 import { Steps } from '@astrojs/starlight/components';
 
 To web monetize an HTML document, such as a web page:
@@ -78,3 +81,15 @@ For example:
 <p><mark>If the site visitor is streaming a payment, then… (does the media element have to be active/playing?)</mark></p>
 
 <p><mark>If the site visitor tips, then… (will the wallet defined for media receive a tip if it's not active/playing?)</mark></p>
+
+<Hidden>
+
+// ## Browser compatibility
+
+<BrowserCompat json={data} />
+
+</Hidden>
+
+## Specifications
+
+<Specification anchor='link-type-monetization' />
