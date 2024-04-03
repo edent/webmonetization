@@ -7,41 +7,39 @@ import Specification from '/src/components/docs/Specification.astro'
 import BrowserCompat from '/src/components/docs/BrowserCompat.astro'
 import data from '/src/data/browser-compat-data/permissionpolicy.json'
 
-A Permissions Policy provides mechanisms for web developers to explicitly declare what functionality can and cannot be used on a website. 
+A <LinkOut href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy">Permissions Policy</LinkOut> provides a mechanism for you to explicitly declare what functionality can and cannot be used on your website. 
 
-The `monetization` directive allows you to control whether the current document and any nesting browsing contexts (iframes) are allowed to use the Web Monetization API.
+The `monetization` policy directive allows you to enable and disable the Web Monetization API within a document and within any of the document's nested browsing contexts (iframes).
 
-## Enable and configure your policy
-
-To enable your policy, configure your web server to return the `Permissions-Policy` HTTP header.
-
-Configuring `Permissions-Policy` involves adding the header to each applicable web page and giving the header a list of origins permitted to use the Web Monetization API.
-
-### Syntax
-
-The basic syntax is as follows.
+## Syntax
 
 ```http
 Permissions-Policy: monetization=(allowlist)
 ```
 
-#### `allowlist`
+Where `(allowlist)` is a list of <LinkOut href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy#allowlist">origins</LinkOut> permitted to use the Web Monetization API. 
 
-`(allowlist)` is a list of origins permitted to use the Web Monetization API. It can be any one of the values listed on the <LinkOut href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy#syntax"> MDN Web Docs Permissions-Policy</LinkOut> page.
-
-## Example
-
-You want to allow your parent page and all iframes within the page to use the Web Monetization API.
+The default allowlist is `self`.
 
 ```http
 Permissions-Policy: monetization=(self)
 ```
 
-`self` is the default policy for `monetization`.
+
 
 :::note
-The `allowlist` attribute only takes effect when the `content navigable` of the iframe is navigated. Adding or removing the `monetization` attribute has no effect on an already-loaded document.
+The allow attribute determines the container policy that will be used when the permissions policy for a `Document` in the iframe's content navigable is initialized. Adding or removing the `monetization` attribute has no effect on an already-loaded `Document`.
 :::
+
+## Example 
+
+You want to allow Web Monetization on your website and in all nested browsing contexts (iframes) in the same origin.
+
+You configure your web server to return the `Permissions-Policy` HTTP header on each of your pages. 
+
+```http
+Permissions-Policy: monetization=(self)
+```
 
 <Hidden>
 

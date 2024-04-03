@@ -29,6 +29,7 @@ export default defineConfig({
       },
       components: {
         Header: './src/components/docs/Header.astro',
+        PageSidebar: './src/components/docs/PageSidebar.astro',
       },
       social: {
         github: 'https://github.com/WICG/webmonetization',
@@ -84,11 +85,11 @@ export default defineConfig({
             },
             {
               label: 'APIs',
-              collapsed: true,
+              collapsed: false,
               items: [
                 {
                   label: 'Browser API',
-                  collapsed: true,
+                  collapsed: false,
                   items: [
                     {
                       label: 'Monetization <link> element',
@@ -102,7 +103,7 @@ export default defineConfig({
                 },
                 {
                   label: 'Web Monetization API',
-                  collapsed: true,
+                  collapsed: false,
                   items: [ 
                     {
                       label: 'Monetization interfaces',

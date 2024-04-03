@@ -2,7 +2,7 @@
 title: Monetization events
 ---
 
-import { LinkOut, Hidden } from "@interledger/docs-design-system";
+import { LinkOut, Hidden, Tooltip } from "@interledger/docs-design-system";
 import Specification from '/src/components/docs/Specification.astro'
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 import BrowserCompat from '/src/components/docs/BrowserCompat.astro'
@@ -10,7 +10,22 @@ import amountSent from '/src/data/browser-compat-data/amountSent.json'
 import incomingPayment from '/src/data/browser-compat-data/incomingPayment.json'
 import paymentPointer from '/src/data/browser-compat-data/paymentPointer.json'
 
-A `monetization` event fires when an outgoing payment is successfully created by the visitor's wallet. Outgoing payment requests are sent by the <mark>Web Monetization agent</mark> to the visitor's wallet by calling the Open Payments <LinkOut href="https://openpayments.guide/apis/resource-server/operations/create-outgoing-payment/">`outgoing-payments`</LinkOut> endpoint. 
+A `monetization` event fires when an outgoing payment is successfully created by the visitor's wallet. Outgoing payment requests are sent by the 
+
+
+
+
+
+
+
+
+
+<Tooltip content="" client:load></Tooltip>
+
+<Tooltip content="" client:load></Tooltip>
+
+
+<mark>Web Monetization agent</mark> to the visitor's wallet by calling the Open Payments <LinkOut href="https://openpayments.guide/apis/resource-server/operations/create-outgoing-payment/">`outgoing-payments`</LinkOut> endpoint. 
 
 Monetization events provide:
 * Information about the [amount and currency](#amountsent) of a sent payment

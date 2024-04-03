@@ -7,35 +7,43 @@ import Specification from '/src/components/docs/Specification.astro'
 import BrowserCompat from '/src/components/docs/BrowserCompat.astro'
 import data from '/src/data/browser-compat-data/csp-monetization-src.json'
 
-A Content Security Policy (CSP) is an extra layer of security that helps detect and mitigate certain types of attacks by allowing website administrators to control resources the user agent, such as a web browser, is allowed to load.
+A <LinkOut href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy">Content Security Policy (CSP)</LinkOut> is an extra layer of security that allows you to control the resources a user agent, such as a web browser, is allowed to load for a given page. CSPs use directives to describe the policies for a certain resource type. 
 
-CSPs use directives to describe the policies for a certain resource type or policy area. 
+The `monetization-src` fetch directive allows you to define the wallet address URLs that a browser can load. If an attempt is made to load an undefined URL, a network error will occur and the URL will not load. 
 
-The `monetization-src` directive allows you define which wallet address URLs can be loaded. If an attempt is made to load an undefined URL, a network error will occur and the URL will not load.
+<table>
+  <tr>
+    <th>CSP Version</th>
+    <td>3</td>
+  </tr>
+  <tr>
+    <th>Directive</th>
+    <td>`monetization-src`</td>
+  </tr>
+  <tr>
+    <th>Directive type</th>
+    <td><LinkOut href="https://developer.mozilla.org/en-US/docs/Glossary/Fetch_directive">Fetch directive</LinkOut></td>
+  </tr>
+</table>
 
-## Enable and configure your policy
-
-To enable CSP, you must configure your web server to return the `Content-Security-Policy` HTTP header.
-
-Configuring CSP involves adding the header to each applicable web page and giving the header values to control which resources the user agent is allowed to load for that page.
-
-### Syntax
-
-The basic syntax is as follows. 
+## Syntax
 
 ```http
-Content-Security-Policy: monetization-src <source>;
-Content-Security-Policy: monetization-src <source>, <source>;
+Content-Security-Policy: monetization-src <value>;
+Content-Security-Policy: monetization-src <value>, <value>;
 ```
 
-#### `source`
-`<source>` is a serialized list and can be any one of the values listed on the <LinkOut href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/Sources#sources">MDN Web Docs CSP Source Values</LinkOut> page. 
+Where `<value>` is a wallet address URL that's allowed to load.
 
-Multiple sources are allowed for `monetization-src` policies.
+```http
+Content-Security-Policy: monetization-src https://example.com;
+```
 
 ## Example
 
-Your wallet address is `https://wallet.example.com/alice`. You’ve set up your CSP header like so:
+Your wallet address is `https://wallet.example.com/alice`. You want to ensure that no other wallet address URLs can be loaded. 
+
+You configure your web server to return the following `Content-Security-Policy` HTTP header on each applicable page of your website. 
 
 ```http
 Content-Security-Policy: monetization-src https://wallet.example.com/alice;
@@ -44,10 +52,10 @@ Content-Security-Policy: monetization-src https://wallet.example.com/alice;
 A bad actor injects their wallet address into your site. 
 
 ```html
-<link rel=”monetization” href=”https://test.example/dameon”>
+<link rel=”monetization” href=”https://example.org”>
 ```
 
-Fetches for the monetization source above will return a network error and not load because the wallet address URL does not match what you defined in your policy.
+However, fetches for the wallet address URL will return a network error and not load because the URL doesn't match what you've defined in your CSP.
 
 <Hidden>
 
