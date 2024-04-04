@@ -7,31 +7,35 @@ import Specification from '/src/components/docs/Specification.astro'
 import BrowserCompat from '/src/components/docs/BrowserCompat.astro'
 import data from '/src/data/browser-compat-data/onmonetization.json'
 
-The `onmonetization` attribute of the `GlobalEventHandlers` mixin is used to process `monetization` events sent to the `window` object. 
+By creating an `onmonetization` event handler, you can allow your web page to programmatically respond when a `monetization` event fires.
 
-`onmonetization` can be applied to any element and is used by the user agent, such as a web browser, to notify that some `<link>` element is [monetized](/docs/implement/link).
+## `window.onmonetization` 
+
+The `onmonetization` event handler is used by the [Web Monetization (WM) agent](/docs/resources/glossary#wm-agent) to process `monetization` events sent to the browser `window` (the event target). 
+
+The `onmonetization` property can be applied to any element and is used by the browser to notify that some `<link>` element is [monetized](/docs/implement/link). 
 
 In a tabbed browser, each tab is represented by its own `window` object.
 
 ## Syntax
 
-```js
-window.onmonetization = functionRef
+```js 
+window.onmonetization=functionRef
 ```
 
-<p><mark>Check the following statement.</mark></p>
+Where `functionRef` is the event handler function to execute when a `monetization` event fires.
 
-`functionRef` is a reference to a function that will execute when a `monetization` event is sent to the `window`.
+## Example 
 
-## Example
-
-Show a visitor an alert box and message when a [Web Monetization event](/docs/implement/events) fires.
+Show a message to site visitors to let them know that the page supports Web Monetization. 
 
 ```js
 window.onmonetization = function () {
-  alert('This page supports Web Monetization.')
+ alert('This page supports Web Monetization.')
 }
 ```
+
+In this example, the fired `monetization` event indicates that a monetization `<link>` element was found within the page (meaning the page supports Web Monetization). The event doesn't indicate whether a payment was sent or received. 
 
 <Hidden>
 

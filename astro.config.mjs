@@ -40,16 +40,34 @@ export default defineConfig({
           link: '/docs/',
         },
         {
-          label: 'Get a digital wallet',
+          label: 'Learn about payments',
           collapsed: true,
           items: [
             {
-              label: 'Get started',
-              link: '/docs/wallet/get-started',
+              label: 'Web Monetization payments',
+              link: '/docs/payments/payments',
             },
             {
-              label: 'Web monetized wallets',
-              link: '/docs/wallet/wallets',
+              label: 'Sending payments',
+              link: '/docs/payments/send-payment',
+            },
+            {
+              label: 'Receiving payments',
+              link: '/docs/payments/receive-payment',
+            },
+          ],
+        },
+        {
+          label: 'Get a wallet address',
+          collapsed: true,
+          items: [
+            {
+              label: 'About wallet addresses',
+              link: '/docs/wallet-address/about',
+            },
+            {
+              label: 'Wallet address providers',
+              link: '/docs/wallet-address/wallets',
             },
           ],
         },
@@ -64,10 +82,6 @@ export default defineConfig({
             {
               label: 'Quick start guide',
               link: '/docs/support/quick-start-guide',
-            },
-            {
-              label: 'Web Monetization payments',
-              link: '/docs/support/payments',
             },
           ],
         },   
@@ -88,7 +102,7 @@ export default defineConfig({
               collapsed: false,
               items: [
                 {
-                  label: 'Browser API',
+                  label: 'HTML DOM API',
                   collapsed: false,
                   items: [
                     {

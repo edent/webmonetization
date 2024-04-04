@@ -9,11 +9,88 @@ import data from '/src/data/browser-compat-data/link.json'
 import { Steps } from '@astrojs/starlight/components';
 
 To web monetize an HTML document, such as a web page:
-* The document must be secure and served over HTTPS
 * You must have a valid [wallet address](/docs/wallet/wallets)
+* The document must be secure and served over HTTPS
 * The document must contain one or more monetization `<link>` elements
 
+## Browser APIs
+
+Thanks to the efforts of the W3C, there are a number of APIs that all major browser vendors build into their browsers. One such API is the HTML DOM API.
+
+## HTML DOM API
+
+The <LinkOut href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API">HTML DOM API</LinkOut> is a browser API composed of interfaces that define the functionality of HTML elements. 
+
+One commonly known interface, `HTMLLinkElement`, defines how the `<link>` element works. The `<link>` element is what allows you to link your page to a resource, such as a style sheet or a different page.
+
+### HTMLLinkElement properties
+
+Of the properties described within the `HTMLLinkElement` IDL, the two most recognizable are `href` and `rel`. For example:
+
+```html 
+<link href=”styles.css” rel=”stylesheet”>
+```
+
+The `href` value is the URL to the resource. The `rel` value indicates the type of link, or relationship, the resource has to the current document.
+
+#### Link types 
+
+Because of web standards, browsers already know how to interpret certain link types.
+
+One common link type is `stylesheet`. When a browser loads a page that contains `<link href=”styles.css” rel=”stylesheet”>`, the browser automatically knows to import a style sheet from the given URL.
+
+##### `monetization` link type
+
+As a developer, the most important piece of Web Monetization is the `monetization` link type. It’s what tells the world that your HTML document supports Web Monetization.
+
+Add the link type to your document like so:
+
+```html
+<link href=”https://wallet.example.com/alice” rel=”monetization”>
+```
+
+When adding a monetization link, the `rel` must equal `monetization`. The `href` value is the wallet address of the payment account into which payments will be received.
+
+Importantly, the `monetization` link type is not a standard link type (yet). How, then, do web browsers know what to do? The answer is that browsers need help from a [Web Monetization agent](/docs/resources/glossary#wm-agent). 
+
+Current state
+
+The Web Monetization agent extends the capabilities of the HTML DOM API so that web browsers can support the `monetization` link type.
+
+Future state (hopefully)
+
+The `monetization` link type is accepted as a standard, making it natively supported by web browsers. The Web Monetization agent no longer has to extend the HTML DOM API.
+
+
+
+
+
+
+
+
+--------
+
 ## Monetization `<link>` element
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------
+
 
 Web Monetization (WM) extends the capabilities of the standard HTML `<link>` element to add support for `rel="monetization"`.
 

@@ -1,0 +1,46 @@
+---
+title: About wallet addresses
+---
+
+import { LinkOut } from "@interledger/docs-design-system";
+
+Before you implement Web Monetization (WM) on your site or send a payment to someone who has, you must have a wallet address that supports receiving and/or sending Web Monetization payments.
+
+## What is a wallet address? 
+
+The term *wallet address* has existed for some time and is used in a number of different contexts. In Web Monetization, a wallet address is a secure, unique URL that:
+
+* Represents an Open Payments-enabled account
+* Provides an entry point to the Open Payments APIs
+
+```http title="Example"
+https://wallet.example.com/alice
+```
+
+A wallet address is like an email address for a payment account. Both wallet addresses and email addresses are publicly shareable, and simply knowing either address does not grant unauthorized access to the underlying account.
+
+Every Open Payments-enabled account will have one or more wallet addresses assigned to it.
+
+## What is an Open Payments-enabled account?
+
+An Open Payments-enabled account is a payment account issued by an account servicing entity that has implemented the Open Payments standard.
+
+## What is an account servicing entity?
+
+An account servicing entity (ASE) is an entity that provides and maintains payment accounts. ASEs that maintain financial accounts are regulated entities within the countries they operate and are often required to verify the identity of a customer before allowing the customer to open an account. Examples of ASEs include banks, digital wallet providers, mobile money providers, and crypto wallets. 
+
+## What is the Open Payments standard?
+
+Open Payments is an open standard and set of APIs meant for implementation by ASEs. When an ASE implements Open Payments, their customers' accounts become Open Payments-enabled.
+
+The purpose of the standard is to allow third-party applications and other programs to connect to their users' payment accounts (with the user's permission). Reasons why an application would want to connect to a user's payment account include retrieving the user's transaction history and sending a payment from the user's account on the user's behalf.
+
+## How do I know if my payment account supports Open Payments?
+
+Integrating with the standard takes a bit of work, so there's only a handful of entities that support Open Payments at this moment. 
+
+Review the [wallet address providers](/docs/wallet-address/wallets) page for a list of entities that support Open Payments and can issue you a wallet address. Remember that an Open Payments-enabled account and wallet address are required in order to send and/or receive Web Monetization payments. 
+
+## How do I get a wallet address?
+
+Review the [wallet address providers](/docs/wallet-address/wallets) page.
