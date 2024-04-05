@@ -1,0 +1,50 @@
+---
+title: Wallet address FAQ
+banner:
+    content: You must have a wallet address to send and/or receive Web Monetization payments.
+---
+
+import { LinkOut, CodeBlock, Tooltip } from "@interledger/docs-design-system";
+
+Before you implement Web Monetization (WM) on your site or send a payment to someone who has, you must have a wallet address that supports receiving and/or sending Web Monetization payments.
+
+## What is a wallet address?
+
+The term *wallet address* has existed for some time and is used in a number of different contexts. In Web Monetization, a wallet address is a secure, unique URL that:
+
+* Represents an [Open Payments-enabled account](#what-is-an-open-payments-enabled-account)
+* Provides an entry point to the Open Payments APIs
+
+<CodeBlock title="Example">
+
+```http
+https://wallet.example.com/alice
+```
+
+</CodeBlock>
+
+A wallet address is like an email address for a payment account. Both wallet addresses and email addresses are publicly shareable, and simply knowing either address does not grant unauthorized access to the underlying account.
+
+Every Open Payments-enabled account will have one or more [wallet addresses](#how-do-i-get-a-wallet-address) assigned to it.
+
+## What is an Open Payments-enabled account?
+
+An Open Payments-enabled account is a payment account issued by an [account servicing entity](#what-is-an-account-servicing-entity) that has implemented the [Open Payments standard](#what-is-the-open-payments-standard).
+
+## What is an account servicing entity?
+
+An account servicing entity (ASE) is an entity that provides and maintains payment accounts. ASEs that maintain financial accounts are regulated entities within the countries they operate and are often required to verify the identity of a customer before allowing the customer to open an account. Examples of ASEs include banks, digital wallet providers, mobile money providers, and crypto wallets. 
+
+## What is the Open Payments standard?
+
+<LinkOut href="https://openpayments.dev">Open Payments</LinkOut> is an open standard and set of APIs meant for implementation by <Tooltip content="Account servicing entities" client:load>ASEs</Tooltip>. When an ASE implements Open Payments, their customers' accounts become Open Payments-enabled.
+
+The purpose of the standard is to allow third-party applications and other programs to connect to their users' payment accounts (with the user's permission). Reasons why an application would want to connect to a user's payment account include retrieving the user's transaction history and sending a payment from the user's account on the user's behalf.
+
+## How do I know if my payment account is Open Payments-enabled?
+
+Integrating with the standard takes a bit of work, so there's only a handful of providers that support Open Payments at this time. If you have an account with a provider listed on the [wallet address providers](/docs/wallet-address/wallets) page, it's likely you have, or can get, an Open Payments-enabled account.
+
+## How do I get a wallet address?
+
+Sign up with an account servicing entity that has implemented Open Payments. There's only a handful of entities that offer Open Payments-enabled accounts and wallet addresses at this time. These entities are listed on the [wallet address providers](/docs/wallet-address/wallets) page.

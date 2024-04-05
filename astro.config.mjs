@@ -62,8 +62,8 @@ export default defineConfig({
           collapsed: true,
           items: [
             {
-              label: 'About wallet addresses',
-              link: '/docs/wallet-address/about',
+              label: 'FAQ',
+              link: '/docs/wallet-address/faq',
             },
             {
               label: 'Wallet address providers',
