@@ -7,7 +7,7 @@ import Specification from '/src/components/docs/Specification.astro'
 import BrowserCompat from '/src/components/docs/BrowserCompat.astro'
 import data from '/src/data/browser-compat-data/onmonetization.json'
 
-By creating an `onmonetization` event handler, you can allow your web page to programmatically respond when a `monetization` event fires.
+By creating an `onmonetization` event handler, you can allow your web page to programmatically respond to `monetization` events.
 
 ## `window.onmonetization` 
 
@@ -35,7 +35,34 @@ window.onmonetization = function () {
 }
 ```
 
-In this example, the fired `monetization` event indicates that a monetization `<link>` element was found within the page (meaning the page supports Web Monetization). The event doesn't indicate whether a payment was sent or received. 
+In this example, the `monetization` event indicates that a monetization `<link>` element was found within the page (meaning the page supports Web Monetization). The event doesn't indicate whether a payment was sent or received. 
+
+<p />
+
+<mark> The following is from the spec. Is it a better example?</mark>
+
+https://webmonetization.org/specification/#monetizing-a-web-page
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Blog</title>
+    <link
+      rel="monetization"
+      href="https://example.com/pay"
+      onmonetization="sayThanks(this)"
+    />
+    <script>
+      function sayThanks(monetizedLink) {
+        // Do something here
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
+```
 
 <Hidden>
 

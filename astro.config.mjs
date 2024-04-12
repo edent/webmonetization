@@ -30,6 +30,8 @@ export default defineConfig({
       components: {
         Header: './src/components/docs/Header.astro',
         PageSidebar: './src/components/docs/PageSidebar.astro',
+        Footer: './src/components/docs/Footer.astro',
+        PageTitle: './src/components/docs/PageTitle.astro',
       },
       social: {
         github: 'https://github.com/WICG/webmonetization',
@@ -63,7 +65,7 @@ export default defineConfig({
           items: [
             {
               label: 'FAQ',
-              link: '/docs/wallet-address/faq',
+              link: '/docs/wallet-address/wallet-faq',
             },
             {
               label: 'Wallet address providers',

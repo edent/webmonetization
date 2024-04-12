@@ -1,5 +1,7 @@
 ---
 title: Monetization <Link> Element
+tableOfContents:
+    maxHeadingLevel: 4
 ---
 
 import { LinkOut, Hidden } from "@interledger/docs-design-system";
@@ -8,91 +10,16 @@ import BrowserCompat from '/src/components/docs/BrowserCompat.astro'
 import data from '/src/data/browser-compat-data/link.json'
 import { Steps } from '@astrojs/starlight/components';
 
+## Prerequisites
+
 To web monetize an HTML document, such as a web page:
-* You must have a valid [wallet address](/docs/wallet/wallets)
+* You must have a valid [wallet address](/docs/wallet-address/wallets)
 * The document must be secure and served over HTTPS
 * The document must contain one or more monetization `<link>` elements
 
-## Browser APIs
-
-Thanks to the efforts of the W3C, there are a number of APIs that all major browser vendors build into their browsers. One such API is the HTML DOM API.
-
-## HTML DOM API
-
-The <LinkOut href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API">HTML DOM API</LinkOut> is a browser API composed of interfaces that define the functionality of HTML elements. 
-
-One commonly known interface, `HTMLLinkElement`, defines how the `<link>` element works. The `<link>` element is what allows you to link your page to a resource, such as a style sheet or a different page.
-
-### HTMLLinkElement properties
-
-Of the properties described within the `HTMLLinkElement` IDL, the two most recognizable are `href` and `rel`. For example:
-
-```html 
-<link href=”styles.css” rel=”stylesheet”>
-```
-
-The `href` value is the URL to the resource. The `rel` value indicates the type of link, or relationship, the resource has to the current document.
-
-#### Link types 
-
-Because of web standards, browsers already know how to interpret certain link types.
-
-One common link type is `stylesheet`. When a browser loads a page that contains `<link href=”styles.css” rel=”stylesheet”>`, the browser automatically knows to import a style sheet from the given URL.
-
-##### `monetization` link type
-
-As a developer, the most important piece of Web Monetization is the `monetization` link type. It’s what tells the world that your HTML document supports Web Monetization.
-
-Add the link type to your document like so:
-
-```html
-<link href=”https://wallet.example.com/alice” rel=”monetization”>
-```
-
-When adding a monetization link, the `rel` must equal `monetization`. The `href` value is the wallet address of the payment account into which payments will be received.
-
-Importantly, the `monetization` link type is not a standard link type (yet). How, then, do web browsers know what to do? The answer is that browsers need help from a [Web Monetization agent](/docs/resources/glossary#wm-agent). 
-
-Current state
-
-The Web Monetization agent extends the capabilities of the HTML DOM API so that web browsers can support the `monetization` link type.
-
-Future state (hopefully)
-
-The `monetization` link type is accepted as a standard, making it natively supported by web browsers. The Web Monetization agent no longer has to extend the HTML DOM API.
-
-
-
-
-
-
-
-
---------
-
 ## Monetization `<link>` element
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
---------
-
-
-Web Monetization (WM) extends the capabilities of the standard HTML `<link>` element to add support for `rel="monetization"`.
+The monetization `<link>` element provides the signal that indicates your HTML document supports Web Monetization.
 
 ### Syntax
 
@@ -113,33 +40,34 @@ For example:
 The `href` attribute only supports a wallet address in URL format. If your wallet address begins with `$`, visit <LinkOut href='https://paymentpointers.org/'>paymentpointers.org</LinkOut> and enter your address into the _Payment Pointer_ field. Use the address that appears in the adjacent _URL_ field as your `href` value.
 :::
 
-### How it works
+### Placement
 
-<Steps>
-1. Your site visitor installs a <mark>WM agent</mark>, then visits your page.
-2. Their WM agent identifies your monetization `<link>` and parses the link to get your wallet address.
-3. Their WM agent requests authorization and instructions from your wallet to send you a payment.
-4. Their WM agent sends the authorization and instructions to the visitor's wallet.
-5. The visitor's wallet initiates an outgoing payment to your wallet. 
-</Steps>
+A monetization `<link>` is `body-ok`, meaning it's allowed in your document's `<head>` and/or `<body>`.
 
-#### WM agents
+### Multiple monetization links
 
-The `rel="monetization"` link type isn't a <LinkOut href="https://html.spec.whatwg.org/dev/links.html#linkTypes">standard</LinkOut> link type. Until it becomes a standard, web browsers will require help from WM agents (for example, WM extensions) to interpret the link type and facilitate payments.
+A single HTML document can contain multiple monetization `<link>` elements; however, your site visitor's frontend software determines how to handle this scenario. One visitor's software could split payments evenly between all links while another only sends payments to the first link it finds. 
 
-## Link placement
 
-The `monetization` link type is `body-ok`, meaning the `<link>` element is allowed in the `<head>` and/or `<body>`.
 
-## Multiple monetization links
 
-A single HTML document can contain multiple monetization `<link>` elements; however, the visitor's WM agent (e.g., extension) is responsible for handling this scenario. One WM agent could choose to split payments evenly between all links while another could choose to only send payments to the first link on the page.
+
+
+
+
+
+
+
+
+
+
+
 
 :::tip[Recommendation]
-The Interledger WM extension splits payments evenly between links, regardless of the payment being a tip or a stream. We recommend other WM agents follow this approach.
+The Interledger WM extension splits payments evenly between all links, <mark>regardless of the payment being a tip or a stream</mark>. We recommend other software developers follow this approach.
 :::
 
-## Monetizing media 
+### Monetizing media 
 
 The following elements can be web monetized by adding the monetization `<link>` element between the open and close tags.
 
@@ -158,6 +86,43 @@ For example:
 <p><mark>If the site visitor is streaming a payment, then… (does the media element have to be active/playing?)</mark></p>
 
 <p><mark>If the site visitor tips, then… (will the wallet defined for media receive a tip if it's not active/playing?)</mark></p>
+
+## How it works
+
+### HTML DOM API
+
+Due to the efforts of the <LinkOut href="https://www.w3.org/">W3C</LinkOut>, there are a number of APIs that all major browser vendors build into their browsers. One such API is the <LinkOut href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API">HTML DOM API</LinkOut>, which defines the functionality of HTML elements.
+
+#### HTMLLinkElement
+
+The HTML DOM API's `HTMLLinkElement` interface defines how the `<link>` element functions. The `<link>` element is what allows you to link your HTML document to a resource. 
+
+The two most recognizable `HTMLLinkElement` properties are `href` and `rel`. The `href` property defines the URL to the resource. The `rel` property indicates the type of link, or relationship, the resource has to the current document.
+
+### Link type rel="monetization"
+
+Browsers already know how to interpret certain link types because of web standards. One standard link type is `stylesheet`. When a browser loads a page that contains `<link href=”styles.css” rel=”stylesheet”>`, the browser automatically knows to import a style sheet from the given URL.
+
+Unlike `stylesheet`, the `monetization` link type is not a standard. Major web browsers don't automatically know what to do when one or more monetization links are placed in an HTML document. Until `monetization` becomes a standard, browsers must rely on a Web Monetization agent.
+
+### Web Monetization agent
+
+Some of the responsibilities of a Web Monetization agent include:
+
+* Extending the HTML DOM API so that `monetization` is a valid link type
+* Processing the monetization link or links within an HTML document
+* Instrumenting payments by calling the Open Payments API
+
+Until the WM agent is natively included in web browsers, the agent must be added to browsers some other way. One way is to install an extension that includes the agent, such as the Interledger Foundation's WM extension.
+
+#### Sequence
+
+<Steps>
+1. Your site visitor installs Web Monetization configuration software, such as the ILF's browser extension, then visits your page.
+2. The visitor's WM agent, which is built into their WM configuration software, recognizes the monetization `<link>` element in your page and parses it to get your wallet address (the `href` value).
+3. Their agent communicates with both your and their [account servicing entity (ASE)](/docs/resources/glossary#account-servicing-entity-ase), via the Open Payments APIs, to set up the payment.
+4. Their ASE initiates the outgoing payment to your ASE.
+</Steps>
 
 <Hidden>
 
