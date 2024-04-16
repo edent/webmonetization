@@ -2,35 +2,38 @@
 title: Overview
 ---
 
-Web Monetization allows you to support or pay for content that you value on the internet.
+Web Monetization allows you to support the content and creators you enjoy while retaining complete control over who, if, when, and how much to pay. Web Monetization (WM) also preserves your privacy by not collecting or tracking personally identifiable information and browsing history.
 
+## Benefits
 
-make it easier and faster than using a credit card.
+#### Sign up with the Web Monetization-compatible digital wallet provider of your choice.
 
-<p><mark>Needs overview, inline link to quick start guide</mark></p>
+Other solutions may require you to sign up for a particular application, platform, or service provider to support your favorite content. WM doesn’t have this limitation. As long as your chosen wallet provider is compatible with WM, you can send payments to any web monetized pages. 
 
-## Benefits of Web Monetization
+#### Control whether, when, and how much to pay. 
 
-As a web monetized site visitor, you:
-* Control whether to pay, how much to pay, and how often to pay
-* Pay in your preferred currency
-* Can stream a payment and/or tip without entering your billing details on each site
-*  Have a platform-free and subscription-free way to support your favorite web monetized sites
+One key differentiator of WM is that you retain control over if, when, and how much to pay. WM does not allow web monetized sites to define the amount you must pay, nor does it allow sites to pull payments from your account. All payments and their amounts must be explicitly authorized or pre-authorized by you.
 
-## How it works
+#### Send payments in your preferred currency.
 
-As you browse, your WM agent (e.g., extension, browser) checks each page for a Monetization `<link>` element. The `<link>` element contains the recipient's wallet address ([learn more](/docs/implement/link/)).
+WM allows you to send a payment in your preferred currency while the recipient can receive the payment in a currency of their choosing. 
 
-When found, your WM agent begins communicating with the recipient's wallet and your wallet to set up the payment. This all happens behind the scenes and requires no interaction from you ([learn more](/docs/support/payments)).
+#### Send payments privately. 
 
-### Streaming payments
+WM is designed to preserve your privacy. While a recipient can determine how much you sent (and how much they’ve received), WM does not provide the recipient with personally identifiable information such as your name, wallet address, IP address, or anything else that the recipient could use to correlate you with a payment.
 
-You're required to set the amount and frequency of your payments as part of enabling streaming payments in your WM agent. For example $0.01 USD every five minutes. Your WM agent will use these details when setting up a payment. Since the WM agent has these details before you start browsing, it doesn't have to ask for your permission or for payment details each time you land on a web monetized site.
+#### Send payments without entering your billing information on each site and without saving billing details in your browser.
 
-<p><mark>Content above needs a link to config doc when available.</mark></p>
+When you set up your WM configuration software, you link the software to your wallet. That link is all you need to pay web monetized pages. There's no per-site payment forms to complete, and neither the WM software nor your browser need to save card details.
 
-### One-time payments (tips)
+## Constraints
 
-Your WM agent allows you to send a one-time payment, such as a tip, to web monetized sites. One-time payments are not automatic. You must specify the amount to send in your WM agent when you are on the site you want to pay.
+#### You may not be able to send Web Monetization payments in your region.
 
-<p><mark>Content above needs a link to config doc when available.</mark></p>
+To send WM payments, you must have an account with a WM-compatible digital wallet provider. 
+
+Digital wallet providers are regulated entities within the countries they operate. This means there are certain rules, regulations, and laws they must follow in order to provide payment accounts and support transactions to and from these accounts. Since obtaining the proper licensing and registration can be a time consuming and complex process, it's possible that a compatible wallet provider is not yet available in your area.
+
+#### Web Monetization is not an ad blocker.
+
+Sending a payment to a web monetized site does not guarantee an ad-free experience. A website owner can choose to hide ads in response to a payment, but the decision is entirely up to them. The purpose of WM is to facilitate payments from sender to receiver. If and how a website responds to a payment is beyond the scope of WM.

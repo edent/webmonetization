@@ -51,11 +51,11 @@ export default defineConfig({
             },
             {
               label: 'Sending payments',
-              link: '/docs/payments/send-payment',
+              link: '/docs/payments/send-payments',
             },
             {
               label: 'Receiving payments',
-              link: '/docs/payments/receive-payment',
+              link: '/docs/payments/receive-payments',
             },
           ],
         },
@@ -178,7 +178,7 @@ export default defineConfig({
                   link: '/docs/implement/get-involved',
                 },
                 {
-                  label: 'Plugins and integrations',
+                  label: 'Libraries',
                   link: '/docs/resources/libraries',
                 },
               ],

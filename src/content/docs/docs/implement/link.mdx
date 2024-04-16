@@ -46,25 +46,10 @@ A monetization `<link>` is `body-ok`, meaning it's allowed in your document's `<
 
 ### Multiple monetization links
 
-A single HTML document can contain multiple monetization `<link>` elements; however, your site visitor's frontend software determines how to handle this scenario. One visitor's software could split payments evenly between all links while another only sends payments to the first link it finds. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+A single HTML document can contain multiple monetization `<link>` elements; however, your site visitor's WM configuration software determines how to handle this scenario. One visitor's software could split payments evenly between all links while another only sends payments to the first link it finds. 
 
 :::tip[Recommendation]
-The Interledger WM extension splits payments evenly between all links, <mark>regardless of the payment being a tip or a stream</mark>. We recommend other software developers follow this approach.
+The Interledger WM extension splits payments evenly between all links. We recommend other software developers follow this approach.
 :::
 
 ### Monetizing media 
@@ -82,10 +67,6 @@ For example:
     <link rel=”monetization” href=”https://wallet.example.com/bob”>
 </audio>
 ```
-
-<p><mark>If the site visitor is streaming a payment, then… (does the media element have to be active/playing?)</mark></p>
-
-<p><mark>If the site visitor tips, then… (will the wallet defined for media receive a tip if it's not active/playing?)</mark></p>
 
 ## How it works
 

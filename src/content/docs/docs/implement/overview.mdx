@@ -2,18 +2,60 @@
 title: Overview
 ---
 
-Via a [single line of code](/docs/implement/quick-start-guide), you can indicate that your page supports Web Monetization payments. 
+With a [single line of code](/docs/implement/quick-start-guide), you can indicate that your page supports Web Monetization payments. 
 
 Web Monetization (WM) is an easy, light-weight, and non-intrusive way for you to monetize your content while preserving the privacy of your supporters. You can use it to replace or complement your existing revenue models.
 
-<p />
+## Benefits
 
-<mark>Section for additional benefits. Working on wording w/ Tseli.</mark>
+#### Sign up with the Web Monetization-compatible digital wallet provider of your choice.
 
-<p />
+Other solutions may require both you and your supporters to use the same application, platform, or service provider. WM doesn’t have this limitation. As long as both your and your supporters’ chosen wallet providers are compatible with WM, they can send you a payment.
 
-<mark>Section for constraints/limitations.</mark>
+#### Receive payment in real time.
 
-<p />
+Some solutions require you to wait until a given day of the month or until you reach a minimum balance before you can receive your payments. WM allows payments of any amount to be immediately deposited into your wallet account.
 
-<mark>Section for high-level flow.</mark>
+#### Receive payments in your preferred currency.
+
+Some solutions require both you and your supporters to use the same currency. WM allows you to receive payments in a currency of your choosing, while your supporters can send payments in their preferred currency.
+
+#### Complement existing revenue models 
+
+**Reach a wider paying audience.**
+
+Some offerings, such as subscriptions, can result in missed revenue opportunities due to things like price, renewal frequencies, accepted currencies, and fees. WM allows you to keep your current offerings while affording your supporters the ability to pay how, when, and what they want.
+
+**Regain lost ad revenue.**
+
+If your site is even partially sustained by ad revenue, then every impression counts. Many ad networks pay per thousand impressions and require you to earn a minimum amount before they pay out. While ad blockers can improve user experience, they also make earning ad revenue more difficult. WM can help make up for, if not exceed, the difference.
+
+#### Use in place of other revenue models.
+
+Some recurring revenue models, like subscriptions, can have overhead costs beyond the time, effort, and money required to implement a solution. For example, you may be required to provide customer support for your subscribers, manage chargebacks and refunds, and administer records through various Content Management System (CMS) tools. Here, you are offering your supporters a product you are responsible for. With WM, payments are anonymous. There are no customer records to maintain. You aren’t liable for chargebacks or refunds because your supporters are in control of if, when, and how much they pay. Plus, any payment-related issues your supporters experience are likely the responsibility of their digital wallet provider or WM configuration software provider to resolve.
+
+## Constraints
+
+#### You may not be able to receive Web Monetization payments in your region.
+
+To receive WM payments, you must have an account with a WM-compatible digital wallet provider. 
+
+Digital wallet providers are regulated entities within the countries they operate. This means there are certain rules, regulations, and laws they must follow in order to provide payment accounts and support transactions to and from these accounts. Since obtaining the proper licensing and registration can be a time consuming and complex process, it's possible that a compatible wallet provider is not yet available in your area.
+
+#### Web Monetization does not track your supporters or collect personally identifiable information. 
+
+WM is designed to preserve the privacy of your supporters. While you can use monetization events to determine sent and received amounts, WM does not track your supporters' names, wallet addresses, IP addresses, or other information that could enable you to correlate a payment with a specific individual or determine their browsing behavior.
+
+#### Web Monetization does not allow you to initiate payments from your supporters' accounts. 
+
+One key differentiator of WM is that your supporters retain control over if, when, and how much they pay. WM does not provide the capability for your page to initiate a payment on behalf of your supporters. When you web monetize a page, you are embedding your wallet address so that your supporters' software knows where to send a payment if and when it is authorized by the supporter to do so.
+
+#### Web Monetization does not allow you to define payment amounts.
+
+With WM, your supporters are in control of how much they pay. WM does not provide the capability for you to define the amount you want to receive. For this reason, WM is not designed to support traditional e-commerce transactions. 
+
+You can write your own code to display payment-related messaging or to, for example, provide access to exclusive content after a certain amount has been received; however, this functionality is purposefully excluded from WM. If you want to define your own prices, there are numerous other platforms and services that are built specifically for this purpose. 
+
+#### There might be fees.
+
+Web Monetization does not charge or collect fees; however, your digital wallet provider might. For example, you may be charged a currency conversion fee if you are sent a payment in USD, but receive your payments in GBP. Check with your digital wallet provider to ensure you understand their fees and conditions. 
