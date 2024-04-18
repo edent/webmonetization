@@ -7,3 +7,43 @@ import { Mermaid, MermaidWrapper } from "@interledger/docs-design-system";
 <p><mark>Discuss payment mechanics from the perspective of the sender/site visitor</mark></p>
 
 
+1. Alice signs up with a WM-compatible digital wallet provider so she can receive WM payments in USD. Her wallet provider assigns her a wallet address of `https://wallet.example.com/alice`.
+2. Alice adds the monetization `<link>` element to her page, adding her wallet address as the `href` value. Alice can now receive WM payments!
+```html
+<html>
+    <head>
+        <title>My page</title>
+        <link rel="monetization" href="https://wallet.example.com/alice">
+    </head>
+    <body>...</body>
+</html>
+```
+3. Bob signs up with a WM-compatible digital wallet provider so he can send WM payments in GBP. His wallet provider assigns him a wallet address of `https://anotherwallet.example/bob`.
+4. Bob installs the Interledger WM extension into his browser.
+5. Bob connects the extension to his digital wallet and configures his payment preferences in the extension. 
+6. <mark>Something about Bob giving extension/wallet authorization to make payments</mark>.
+7. Bob visits Alice's page. 
+8. Bob's extension detects the monetization link on Alice's page.
+9. Bob's extension issues a GET request to Alice's wallet address to discover the Open Payments service endpoint.
+```
+GET /alice HTTP/1.1
+Accept: application/json
+Host: wallet.example.com
+```
+10. The response includes, among other details, the URL for Alice's grant request endpoint AKA authorization server.
+```
+HTTP/1.1 200 Success
+Content-Type: application/json
+
+{
+  "id":"https://wallet.example/alice",
+  "assetCode":"USD",
+  "assetScale":2,
+  "authServer":"https://wallet.example/auth"
+}
+```
+11. 
+
+
+
+

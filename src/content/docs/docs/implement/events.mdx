@@ -4,15 +4,15 @@ title: Monetization events
 
 import { LinkOut, Hidden, Tooltip } from "@interledger/docs-design-system";
 import Specification from '/src/components/docs/Specification.astro'
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
 import BrowserCompat from '/src/components/docs/BrowserCompat.astro'
 import amountSent from '/src/data/browser-compat-data/amountSent.json'
 import incomingPayment from '/src/data/browser-compat-data/incomingPayment.json'
 import paymentPointer from '/src/data/browser-compat-data/paymentPointer.json'
 
-One responsibility of the [Web Monetization (WM) agent](/docs/resources/glossary#wm-agent) is to instrument payments. The agent does this by calling the Open Payments APIs. Calls are made to the <LinkOut href="https://openpayments.dev/apis/resource-server/operations/create-incoming-payment/">`/incoming-payments`</LinkOut> endpoint at the recipient's <Tooltip content="Account servicing entity" client:load>ASE</Tooltip> and to the <LinkOut href="https://openpayments.dev/apis/resource-server/operations/create-outgoing-payment/">`/outgoing-payments`</LinkOut> endpoint at the sender's ASE.
+One responsibility of the [Web Monetization (WM) agent](/docs/resources/glossary#wm-agent) is to instrument payments. The agent does this by calling the Open Payments APIs. Calls are made to the <LinkOut href="https://openpayments.dev/apis/resource-server/operations/create-incoming-payment/">`/incoming-payments`</LinkOut> endpoint at the recipient's digital wallet provider and to the <LinkOut href="https://openpayments.dev/apis/resource-server/operations/create-outgoing-payment/">`/outgoing-payments`</LinkOut> endpoint at the site visitor's digital wallet provider.
 
-Each time the WM agent receives a `201 outgoing payment created` response from the sender's ASE, the WM agent fires a `monetization` event on the browser window. 
+Each time the WM agent receives a `201 outgoing payment created` response from the site visitor's digital wallet provider, the WM agent fires a `monetization` event on the browser window. 
 
 ### Specifications
 
@@ -20,13 +20,24 @@ Each time the WM agent receives a `201 outgoing payment created` response from t
 
 ## Event listeners
 
-The firing of a `monetization` event does not guarantee that payments will follow or, if they do, how often or how large the payments will be. A `monetization` event indicates that the sender's ASE has created the resources needed to send a payment. 
+The firing of a `monetization` event does not guarantee that payments will follow or, if they do, how often or how large the payments will be. A `monetization` event indicates that the site visitor's digital wallet provider has created the resources needed to send a payment. 
 
 By adding an event listener to the relevant monetization `<link>` element (or one of its ancestors), you can use the `monetization` event properties to verify payments. These properties provide:
 
 * Information about the [amount and currency](#amountsent) of a sent (not received) payment
 * A URL representing an [incoming payment](#incomingpayment) that an be used to determine the amount received, similar to a receipt
 * The URL representing the [wallet address](#paymentpointer) that an incoming payment request was sent to
+
+### High-level flow
+
+<Steps>
+1. You add an event listener to a monetization `<link>`.
+2. The site visitor accesses your page.
+3. The site visitor's WM agent calls the Open Payments APIs to begin setting up the payment. 
+4. The WM agent receives a `201 (outgoing payment created)` response from the site visitor's digital wallet provider.
+5. The WM agent fires a monetization event.
+6. Your event listener calls its defined function.
+</Steps>
 
 ## Event properties
 
@@ -79,14 +90,14 @@ The `amountSent` is not necessarily the amount received. For example, if the rec
 `incomingPayment` is an <LinkOut href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</LinkOut>.
 :::
 
-The `incomingPayment` property allows you to check whether a payment was received and, if so, the amount received. The property returns a URL that represents the incoming payment at the recipient's ASE. By querying the URL, you can get the `receivedAmount`.
+The `incomingPayment` property allows you to check whether a payment was received and, if so, the amount received. The property returns a URL that represents the incoming payment at the recipient's digital wallet provider. By querying the URL, you can get the `receivedAmount`.
 
 #### Example
 
 This example shows a hypothetical verification method that makes a basic request to the `incomingPayment` URL and returns the results. For simplicity, it has no logic for authenticating the request. 
 
 :::note[Authentication]
-In many cases, requests to the `incomingPayment` URL must be authenticated because you're fetching sensitive details. The payment account owner should request these specifics from their ASE.
+In many cases, requests to the `incomingPayment` URL must be authenticated because you're fetching sensitive details. The payment account owner should request these specifics from their digital wallet provider.
 :::
 
 ```js

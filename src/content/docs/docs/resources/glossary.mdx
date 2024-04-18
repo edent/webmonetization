@@ -5,6 +5,9 @@ tableOfContents:
 ---
 
 import { LinkOut, StylishHeader } from '@interledger/docs-design-system'
+import ASE from "/src/partials/glossary-ase.mdx";
+import WA from "/src/partials/glossary-wallet-address.mdx";
+
 
 ## A
 
@@ -12,7 +15,7 @@ import { LinkOut, StylishHeader } from '@interledger/docs-design-system'
 
 ### Account servicing entity (ASE)
 
-An entity that provides and maintains payment accounts for payers and payees. ASEs that maintain financial accounts are regulated entities within the countries they operate. Examples include digital wallet providers, banks, crypto wallets, and mobile money providers.
+<ASE />
 
 ## O
 
@@ -32,9 +35,9 @@ Open Payments-enabled accounts are assigned one or more [wallet addresses](#wall
 
 ### Payment pointer
 
-A payment pointer is a type of Open Payments [wallet address](#wallet-address) that supports Interledger payments. Payment pointer addresses begin with `$` instead of `https://`. For example, `$wallet.example.com/alice`. 
+A payment pointer is a type of [wallet address](#wallet-address) that's assigned to payment accounts that use Interledger as the underlying payment method. For example, `$wallet.example.com/alice`. 
 
-Each payment pointer resolves to a URL with the HTTPS scheme. Because the `href` value in a monetization `<link>` must be a URL, you must convert a payment pointer to its URL equivalent. Enter your payment pointer into the field provided on <LinkOut href="https://paymentpointers.org/">paymentpointers.org</LinkOut> to get the URL.
+All payment pointers resolve to an HTTPS URL. Because the `href` value in a monetization `<link>` must be a URL, you must convert a payment pointer to its URL equivalent. Enter your payment pointer into the field provided on <LinkOut href="https://paymentpointers.org/">paymentpointers.org</LinkOut> to get the URL.
 
 ## U
 
@@ -50,9 +53,7 @@ A <LinkOut href="https://developer.mozilla.org/en-US/docs/Glossary/User_agent">u
 
 ### Wallet address 
 
-A wallet address is a secure, unique URL that represents an Open Payments-enabled account. Each wallet address provides an entry point to the Open Payments APIs, allowing the site visitor's software to get the details it needs to set up a payment.
-
-Similar to how an email address is a publicly shareable ID for an email account, a wallet address is a publicly shareable payment address for the underlying account. Knowing someone's wallet address in no way allows unauthorized access to, or payments from, the account itself.
+<WA />
 
 ### Web Monetization (WM)
 

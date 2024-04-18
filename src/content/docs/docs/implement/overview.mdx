@@ -2,6 +2,8 @@
 title: Overview
 ---
 
+import { LinkOut } from '@interledger/docs-design-system'
+
 With a [single line of code](/docs/implement/quick-start-guide), you can indicate that your page supports Web Monetization payments. 
 
 Web Monetization (WM) is an easy, light-weight, and non-intrusive way for you to monetize your content while preserving the privacy of your supporters. You can use it to replace or complement your existing revenue models.
@@ -52,9 +54,11 @@ One key differentiator of WM is that your supporters retain control over if, whe
 
 #### Web Monetization does not allow you to define payment amounts.
 
-With WM, your supporters are in control of how much they pay. WM does not provide the capability for you to define the amount you want to receive. For this reason, WM is not designed to support traditional e-commerce transactions. 
+With WM, your supporters are in control of how much they pay. WM does not allow you to specify the amount you want to receive. For this reason, WM is not designed to support traditional e-commerce transactions.
 
-You can write your own code to display payment-related messaging or to, for example, provide access to exclusive content after a certain amount has been received; however, this functionality is purposefully excluded from WM. If you want to define your own prices, there are numerous other platforms and services that are built specifically for this purpose. 
+You can write your own code to display payment-related messaging or to, for example, provide access to exclusive content after a certain amount has been received; however, this functionality is purposefully excluded from WM. 
+
+If you want to define your own prices, then integration with the <LinkOut href="https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API">Payment Request API</LinkOut> may be a better alternative to Web Monetization. The Payment Request API allows sites to ask to be paid a certain amount, then the browser (typically with the user’s approval) pays that amount. There are also numerous other platforms and services that are built specifically for selling physical and digital goods.
 
 #### There might be fees.
 

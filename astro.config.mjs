@@ -42,7 +42,7 @@ export default defineConfig({
           link: '/docs/',
         },
         {
-          label: 'Learn about payments',
+          label: 'Learn about Web Monetization payments',
           collapsed: true,
           items: [
             {
@@ -70,6 +70,10 @@ export default defineConfig({
             {
               label: 'Wallet address providers',
               link: '/docs/wallet-address/wallets',
+            },
+            {
+              label: 'Interledger test wallet',
+              link: '/docs/wallet-address/ilf-test-wallet',
             },
           ],
         },

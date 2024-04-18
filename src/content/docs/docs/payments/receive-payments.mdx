@@ -2,25 +2,63 @@
 title: Receiving payments
 ---
 
+import { Steps } from '@astrojs/starlight/components';
+import { LinkOut } from '@interledger/docs-design-system'
+import ASE from "/src/partials/glossary-ase.mdx";
+import WA from "/src/partials/glossary-wallet-address.mdx";
+
+:::danger
+This page is very much in progress.
+:::
+
+Receiving Web Monetization (WM) payments requires you to have an account with a compatible account servicing entity (ASE).
+
+<ASE />
 
 
 
 
+To receive Web Monetization payments, you must have an account with a WM-compatible account servicing entity (ASE) (digital wallet provider). An ASE is compatible with WM when the ASE has integrated with the Open Payments API standard. When you open your account, your ASE will assign you a wallet address. Eg `https://wallet.example.com/alice`. The wallet address is a secure, unique, and shareable URL that acts as a payment address in the same way that an email address is a publicly shareable ID for an email account. 
 
+Define digital wallet provider.
 
-
-
-## Prerequisites
-
-
-
-
-
-
-## Receiving payments
-
-To web monetize a site, you must add a Monetization [`<link>`](/docs/implement/link) element to each page. The destination of the link (the `href`) must point to the wallet address assigned to you by your wallet provider. The underlying payment account is the account into which your payments are received.
+When you web monetize a page, you add a monetization link. Eg `<link rel="monetization" href=""> where the `href` value is your wallet address. 
 
 :::note[Underlying payment account]
 Your underlying payment account supports sending and receiving. If you're both a supporter and publisher of web monetized content, you can use the same wallet address in your <mark>extension/About page</mark> that you use in the Monetization `<link>` element on your website.
 :::
+
+The Open Payments standard 
+
+Open Payments enables open and interoperable payments between WM providers and WM receivers. As such, accounts supplied by both WM providers and WM receivers must implement the Open Payments (OP) specification.
+
+The OP specification defines standards for access to accounts. When granted access, applications and other entities can integrate payments into their feature sets by connecting to their users’ accounts. The ability to then execute payments between OP-enabled accounts relies on the availability of a common payment rail between the accounts.
+
+Wallet addresses
+
+Access to an OP-enabled account, whether for sending or receiving, always starts with a wallet address. In this context, a wallet address is a unique URL that identifies an OP account and provides an entry point for the Open Payments API.
+
+When an individual establishes an account with a WM receiver, the receiver assigns the account one or more wallet addresses. Wallet addresses allow certain account details to be safely shared with third-parties. Third-parties use the details to initiate payments to or from the account. A WM agent is an example of a third-party.
+
+A wallet address is required to web monetize a page and must be added as the href value within the monetization `<link>` element.
+
+For example:
+
+`<link rel="monetization" href="https://wallet.example/alice">`
+
+The WM agent uses the wallet address to begin the money movement process.
+
+
+
+## How it works
+
+<Steps>
+1. A web monetized site visitor accesses your page.
+2. Their WM agent detects the monetization `<link>` element and grabs your wallet address.
+3. The WM agent sends a request to the wallet address, which is the first in a series of Open Payments API calls needed to:
+    * Get the details about the underlying receiving account
+    * Receive permission to send a payment to the account
+    * Create a monetization session within the site visitor's browser tab/window
+    * Create the outgoing payment request
+4. When the payment is successful, the funds are deducted from the WM provider’s account and deposited into the WM receiver’s account.
+</Steps>
