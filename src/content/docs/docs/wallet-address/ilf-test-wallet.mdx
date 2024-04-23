@@ -6,77 +6,102 @@ import { LinkOut, Disclosure } from '@interledger/docs-design-system'
 
 <mark>Alt text isn't working for images</mark>
 
-The Interledger test wallet is an open-source application developed and maintained by the Interledger Foundation. With the test wallet, you can send and receive Web Monetization payments without using real money. 
+The Interledger test wallet is an open-source application developed and maintained by the Interledger Foundation. With the test wallet, you can send and receive Web Monetization payments without using real money.
 
-Sign up for a test wallet account, then create a wallet address for a USD payment account. 
+Sign up for a test wallet account, then create a wallet address for a USD payment account.
 
 ## Sign up for an Interledger test wallet account
 
 1. Go to <LinkOut href="https://rafiki.money">Rafiki.money</LinkOut>.
 2. Click **Create an account** at the bottom-right of the screen.
-3. Enter your email address and a password. A verification email will be sent to the address you enter. 
+3. Enter your email address and a password. A verification email will be sent to the address you enter.
 4. Open the verification email and click **Confirm my email address**.
 5. Sign in to your Interledger test wallet account.
-6. Enter anything into the *Complete KYC* fields. Since this is a test account, you don't need to enter real information.
+6. Enter anything into the _Complete KYC_ fields. Since this is a test account, you don't need to enter real information.
 7. Click **Verify your identity**, then click **Verify Account**.
 8. Click **Go to your account overview**.
 
 ## Create a USD payment account and WM wallet address
 
-1. Sign in to your <LinkOut href="https://rafiki.money">Interledger test wallet</LinkOut> account. 
-2. Click **New account** on the *Home* page.
+1. Sign in to your <LinkOut href="https://rafiki.money">Interledger test wallet</LinkOut> account.
+2. Click **New account** on the _Home_ page.
 3. Enter an account name, select **USD** as the asset, then click **Create account**.
-    :::note
-    Web Monetization can only be enabled on USD accounts. 
-    :::
-    <div style="width:fit-content;border-radius:10px;border:10px solid transparent;background: linear-gradient(45deg, rgb(168,223,209), rgb(112,213,212), rgb(168,189,217)) border-box;">
-        <img src="/img/docs/testnet/01.png" style="max-width:400px;border-radius:10px;"></img>
-    </div>
-4. Select the account, then click **Add money**. Enter any amount and click **Add money** again. You can always add more later.
-    <div style="width:fit-content;border-radius:10px;border:10px solid transparent;background: linear-gradient(45deg, rgb(168,223,209), rgb(112,213,212), rgb(168,189,217)) border-box;">
-        <img src="/img/docs/testnet/02.png" style="max-width:400px;border-radius:10px;"></img>
-    </div>
-5. Click the **Web Monetization** link located above and to the right of your balance.
-    <div style="width:fit-content;border-radius:10px;border:10px solid transparent;background: linear-gradient(45deg, rgb(168,223,209), rgb(112,213,212), rgb(168,189,217)) border-box;">
-        <img src="/img/docs/testnet/03.png" style="max-width:400px;border-radius:10px;"></img>
-    </div>
-6. Click **Add WM payment pointer**.
-    <div style="width:fit-content;border-radius:10px;border:10px solid transparent;background: linear-gradient(45deg, rgb(168,223,209), rgb(112,213,212), rgb(168,189,217)) border-box;">
-        <img src="/img/docs/testnet/04.png" style="max-width:400px;border-radius:10px;"></img>
-    </div>
-7. Enter a [payment pointer](/docs/resources/glossary#payment-pointer) name and a public name of your choosing, then click **Create**.
-    :::note[Payment pointer name]
-    The name you choose will make up your wallet address. In the image below, the wallet address will be `https://ilp.rafiki.money/melissawm`. You'll need this address to <mark>support web monetized content</mark> and/or to [web monetize your own content](/docs/implement/link).
-    :::
-    <div style="width:fit-content;border-radius:10px;border:10px solid transparent;background: linear-gradient(45deg, rgb(168,223,209), rgb(112,213,212), rgb(168,189,217)) border-box;">
-        <img src="/img/docs/testnet/05.png" style="max-width:400px;border-radius:10px;"></img>
-    </div>
-8. Verify your wallet address appears under the *Account* section.
-    <div style="width:fit-content;border-radius:10px;border:10px solid transparent;background: linear-gradient(45deg, rgb(168,223,209), rgb(112,213,212), rgb(168,189,217)) border-box;">
-        <img src="/img/docs/testnet/06.png" style="max-width:400px;border-radius:10px;"></img>
-    </div>
+   :::note
+   Web Monetization can only be enabled on USD accounts.
+   :::
 
+   <img
+     src='/img/docs/testnet/01.png'
+     class='img-outline'
+     style='max-width:500px'
+   />
+
+4. Select the account, then click **Add money**. Enter any amount and click **Add money** again. You can always add more later.
+   <img
+     src='/img/docs/testnet/02.png'
+     class='img-outline'
+     style='max-width:500px'
+   />
+5. Click the **Web Monetization** link located above and to the right of your balance.
+   <img
+     src='/img/docs/testnet/03.png'
+     class='img-outline'
+     style='max-width:500px'
+   />
+6. Click **Add WM payment pointer**.
+   <img
+     src='/img/docs/testnet/04.png'
+     class='img-outline'
+     style='max-width:500px'
+   />
+7. Enter a [payment pointer](/docs/resources/glossary#payment-pointer) name and a public name of your choosing, then click **Create**.
+   :::note[Payment pointer name]
+   The name you choose will make up your wallet address. In the image below, the wallet address will be `https://ilp.rafiki.money/melissawm`. You'll need this address to <mark>support web monetized content</mark> and/or to [web monetize your own content](/docs/implement/link).
+   :::
+   <img
+     src='/img/docs/testnet/05.png'
+     class='img-outline'
+     style='max-width:500px'
+   />
+8. Verify your wallet address appears under the _Account_ section.
+   <img
+     src='/img/docs/testnet/06.png'
+     class='img-outline'
+     style='max-width:500px'
+   />
 
 ## Create a WM wallet address for an existing USD payment account
 
-1. Sign in to your <LinkOut href="https://rafiki.money">Interledger test wallet</LinkOut> account. 
-2. Select your USD account on the *Home* page. 
+1. Sign in to your <LinkOut href="https://rafiki.money">Interledger test wallet</LinkOut> account.
+2. Select your USD account on the _Home_ page.
 3. Click the **Web Monetization** link located above and to the right of your balance.
-    <div style="width:fit-content;border-radius:10px;border:10px solid transparent;background: linear-gradient(45deg, rgb(168,223,209), rgb(112,213,212), rgb(168,189,217)) border-box;">
-        <img src="/img/docs/testnet/03.png" style="max-width:400px;border-radius:10px;"></img>
-    </div>
+
+   <img
+     src='/img/docs/testnet/03.png'
+     class='img-outline'
+     style='max-width:500px'
+   />
+
 4. Click **Add WM payment pointer**.
-    <div style="width:fit-content;border-radius:10px;border:10px solid transparent;background: linear-gradient(45deg, rgb(168,223,209), rgb(112,213,212), rgb(168,189,217)) border-box;">
-        <img src="/img/docs/testnet/04.png" style="max-width:400px;border-radius:10px;"></img>
-    </div>
+
+   <img
+     src='/img/docs/testnet/04.png'
+     class='img-outline'
+     style='max-width:500px'
+   />
+
 5. Enter a [payment pointer](/docs/resources/glossary#payment-pointer) name and a public name of your choosing, then click **Create**.
-    :::note[Payment pointer name]
-    The name you choose will make up your wallet address. In the image below, the wallet address will be `https://ilp.rafiki.money/melissawm`. You'll need this address to <mark>support web monetized content</mark> and/or to [web monetize your own content](/docs/implement/link).
-    :::
-    <div style="width:fit-content;border-radius:10px;border:10px solid transparent;background: linear-gradient(45deg, rgb(168,223,209), rgb(112,213,212), rgb(168,189,217)) border-box;">
-        <img src="/img/docs/testnet/05.png" style="max-width:400px;border-radius:10px;"></img>
-    </div>
-6. Verify your wallet address appears under the *Account* section.
-    <div style="width:fit-content;border-radius:10px;border:10px solid transparent;background: linear-gradient(45deg, rgb(168,223,209), rgb(112,213,212), rgb(168,189,217)) border-box;">
-        <img src="/img/docs/testnet/06.png" style="max-width:400px;border-radius:10px;"></img>
-    </div>
+   :::note[Payment pointer name]
+   The name you choose will make up your wallet address. In the image below, the wallet address will be `https://ilp.rafiki.money/melissawm`. You'll need this address to <mark>support web monetized content</mark> and/or to [web monetize your own content](/docs/implement/link).
+   :::
+   <img
+     src='/img/docs/testnet/05.png'
+     class='img-outline'
+     style='max-width:500px'
+   />
+6. Verify your wallet address appears under the _Account_ section.
+   <img
+     src='/img/docs/testnet/06.png'
+     class='img-outline'
+     style='max-width:500px'
+   />
