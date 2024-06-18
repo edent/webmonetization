@@ -50,12 +50,8 @@ export default defineConfig({
               link: '/docs/payments/payments',
             },
             {
-              label: 'Sending payments',
-              link: '/docs/payments/send-payments',
-            },
-            {
-              label: 'Receiving payments',
-              link: '/docs/payments/receive-payments',
+              label: 'Web Monetization payment flow',
+              link: '/docs/payments/wm-flow',
             },
           ],
         },
@@ -173,6 +169,31 @@ export default defineConfig({
                 },
               ],
             },
+          ],
+        },
+        {
+          label: 'Resources',
+          collapsed: true,
+          items: [
+            {
+              label: 'Glossary',
+              link: '/docs/resources/glossary',
+            },
+            {
+              label: 'Specification',
+              link: 'https://webmonetization.org/specification/',
+              attrs: { target: '_blank' },
+            },
+            {
+              label: 'Interledger',
+              link: 'https://interledger.org',
+              attrs: { target: '_blank' },
+            },
+            {
+              label: 'Open Payments',
+              link: 'https://openpayments.dev/',
+              attrs: { target: '_blank' },
+            },
             {
               label: 'Community content',
               collapsed: true,
@@ -187,34 +208,8 @@ export default defineConfig({
                 },
               ],
             },
-
-            {
-              label: 'Resources',
-              collapsed: true,
-              items: [
-                {
-                  label: 'Glossary',
-                  link: '/docs/resources/glossary',
-                },
-                {
-                  label: 'Specification',
-                  link: 'https://webmonetization.org/specification/',
-                  attrs: { target: '_blank' },
-                },
-                {
-                  label: 'Interledger',
-                  link: 'https://interledger.org',
-                  attrs: { target: '_blank' },
-                },
-                {
-                  label: 'Open Payments',
-                  link: 'https://openpayments.guide/',
-                  attrs: { target: '_blank' },
-                },
-              ],
-            },
           ],
-        },
+      },
       ],
     }),
     react(),

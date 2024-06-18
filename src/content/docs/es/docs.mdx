@@ -55,7 +55,7 @@ Con la ayuda de un <Tooltip content='La entidad que envía un pago' client:load>
 
 La función de la monetización web es ayudar a coordinar los pagos. No procesar ni liquidar pagos.
 
-En cada extremo de la monetización web hay una cuenta que admite <LinkOut href="https://openpayments.guide">Open Payments</LinkOut>. El proveedor de WM proporciona a tu visitante una cuenta de envío con fondos. En algunos casos, el visitante podría incluso actuar como su propio proveedor de WM. El receptor WM te proporciona una cuenta receptora.
+En cada extremo de la monetización web hay una cuenta que admite <LinkOut href="https://openpayments.dev">Open Payments</LinkOut>. El proveedor de WM proporciona a tu visitante una cuenta de envío con fondos. En algunos casos, el visitante podría incluso actuar como su propio proveedor de WM. El receptor WM te proporciona una cuenta receptora.
 
 La monetización web se comunica con las cuentas emisoras y receptoras para obtener las autorizaciones e instrucciones necesarias para que un pago sea enviado y recibido. Luego, el procesamiento y la liquidación de pagos se producen entre las cuentas emisoras y receptoras, fuera del flujo de monetización web.
 
@@ -63,6 +63,6 @@ La monetización web se comunica con las cuentas emisoras y receptoras para obte
 
 En junio de 2023 se publicó una nueva versión de la especificación de Monetización web. Los usuarios de la versión anterior deben tener en cuenta lo siguiente:
 
-- La versión anterior solo utilizaba el Protocolo de configuración de pago simple (SPSP) de Interledger. La nueva versión utiliza <LinkOut href="https://openpayments.guide/">Open Payments</LinkOut>.
+- La versión anterior solo utilizaba el Protocolo de configuración de pago simple (SPSP) de Interledger. La nueva versión utiliza <LinkOut href="https://openpayments.dev/">Open Payments</LinkOut>.
 - El elemento `<meta>` está obsoleto en favor del elemento [`<link>`](./references/html-link-rel-monetization/).
 - El elemento `<link>` no admite la forma abreviada de un puntero de pago (por ejemplo, `$wallet.example/alice`). Debes utilizar la URL completa a la que se resuelve el puntero de pago (por ejemplo, `https://wallet.example/alice`). Si necesitas ayuda para convertir un indicador de pago de una abreviatura a su URL equivalente, ingresa su indicador de pago en el campo de entrada en <LinkOut href="https://paymentpointers.org">paymentpointers.org</LinkOut>. En la mayoría de los casos, puedes simplemente reemplazar `$` por `https://`.

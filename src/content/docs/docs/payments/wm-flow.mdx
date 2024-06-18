@@ -1,0 +1,71 @@
+---
+title: Web Monetization payment flow
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Overview stuff
+
+## H2 stuff
+
+### Step 1 - Install and configure browser extension
+
+<img
+  src="/img/docs/pymt-flow/01.png"
+  alt="Alt text goes here"
+  class="img-outline"
+  style="max-width:450px"
+/>
+
+<Steps>
+1. Alice installs the Web Monetization extension into her browser. The extension is comprised of configuration software and an agent.
+2. During configuration, Alice enters her wallet address into the extension. The configuration software passes the address to the agent.
+3. The agent communicates with Alice's ASE and requests permission for the extension to connect to Alice's payment account. 
+4. The ASE responds to the agent and provides it with the required permissions and grants needed for the extension to initiate payments on Alice's behalf.
+</Steps>
+
+### Step 2 - Initiate payment to web monetized site
+
+<img
+  src="/img/docs/pymt-flow/02.png"
+  alt="Alt text goes here"
+  class="img-outline"
+  style="max-width:600px"
+/>
+
+<Steps>
+1. Alice visits Bob's web monetized website. 
+2. The agent component of her extension recognizes the monetization link element within the page and parses Bob's wallet address.
+3. The agent sends a request to Bob's ASE, via his wallet address, to obtain permission to send Bob a payment, as well as to receive instructions on how to send the payment.
+4.  Bob's ASE responds to the agent and provides it with the requested permissions and instructions.
+</Steps>
+
+### Step 3 - Communicate payment details to payer's ASE
+
+<img
+  src="/img/docs/pymt-flow/03.png"
+  alt="Alt text goes here"
+  class="img-outline"
+  style="max-width:600px"
+/>
+
+<Steps>
+1. With the necessary permissions and instructions to send a payment, Alice's extension sends these details, as well as payment amount, to Alice's ASE. 
+2. Alice's ASE uses the details to prepare an Interledger payment.
+</Steps>
+
+### Step 4 - Make a payment
+
+<img
+  src="/img/docs/pymt-flow/04.png"
+  alt="Alt text goes here"
+  class="img-outline"
+  style="max-width:600px"
+/>
+
+<Steps>
+1. Alice's ASE sends Interledger packets to Bob's ASE. 
+2. Bob's ASE accepts the packets and communicates this acceptance back to Alice's ASE. 
+</Steps>
+
+At this point, an Interledger payment has been made and Bob should see the amount credited to his account. However, Alice's ASE still needs to settle with Bob's ASE. Settlement occurs outside of the Web Monetization, Open Payments, and Interledger flows. 

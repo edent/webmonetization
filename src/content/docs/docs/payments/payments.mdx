@@ -1,49 +1,115 @@
 ---
-title: Web Monetization Payments
+title: Web Monetization payments
 ---
 
-import { Mermaid, MermaidWrapper } from "@interledger/docs-design-system";
+import { Steps } from '@astrojs/starlight/components';
+import { LinkOut, StylishHeader, CodeBlock } from '@interledger/docs-design-system'
+import ASE from "/src/partials/glossary-ase.mdx";
+import WA from "/src/partials/glossary-wallet-address.mdx";
 
-<p><mark>Discuss payment mechanics from the perspective of the sender/site visitor</mark></p>
+## Overview
 
+The purpose of this page is to provide a more detailed description of how Web Monetization payments can work. For diagrams and higher-level information, visit the [Web Monetization payment flow](/docs/payments/wm-flow) page.
 
-1. Alice signs up with a WM-compatible digital wallet provider so she can receive WM payments in USD. Her wallet provider assigns her a wallet address of `https://wallet.example.com/alice`.
-2. Alice adds the monetization `<link>` element to her page, adding her wallet address as the `href` value. Alice can now receive WM payments!
-```html
-<html>
-    <head>
-        <title>My page</title>
-        <link rel="monetization" href="https://wallet.example.com/alice">
-    </head>
-    <body>...</body>
-</html>
-```
-3. Bob signs up with a WM-compatible digital wallet provider so he can send WM payments in GBP. His wallet provider assigns him a wallet address of `https://anotherwallet.example/bob`.
-4. Bob installs the Interledger WM extension into his browser.
-5. Bob connects the extension to his digital wallet and configures his payment preferences in the extension. 
-6. <mark>Something about Bob giving extension/wallet authorization to make payments</mark>.
-7. Bob visits Alice's page. 
-8. Bob's extension detects the monetization link on Alice's page.
-9. Bob's extension issues a GET request to Alice's wallet address to discover the Open Payments service endpoint.
-```
-GET /alice HTTP/1.1
-Accept: application/json
-Host: wallet.example.com
-```
-10. The response includes, among other details, the URL for Alice's grant request endpoint AKA authorization server.
-```
-HTTP/1.1 200 Success
-Content-Type: application/json
+:::caution
+This page describes one specific implementation of Web Monetization. Other implementations may behave differently and/or have different integration requirements from what's described here.
+:::
 
-{
-  "id":"https://wallet.example/alice",
-  "assetCode":"USD",
-  "assetScale":2,
-  "authServer":"https://wallet.example/auth"
-}
-```
-11. 
+## How to use this page
 
+Unless you're already familiar with Web Monetization payments, we suggest reading this page from top to bottom. Each section provides information necessary for understanding subsequent sections.
 
+## Account servicing entities (ASEs)
 
+<ASE />
 
+<StylishHeader>Web Monetization</StylishHeader>
+
+Both the sender and the recipient of a Web Monetization payment must have an account with an ASE that supports Web Monetization payments. 
+
+An ASE supports Web Monetization payments by integrating with Open Payments and Interledger.
+
+## Open Payments 
+
+<LinkOut href="https://openpayments.dev">Open Payments</LinkOut> provides a standard way for ASEs to allow third-party clients to securely retrieve account information and initiate payments from its customers' accounts with consent. For example, a customer could give an app permission to initiate a payment from their account, rather than entering and/or storing their payment details within the app itself.
+
+When an ASE implements Open Payments, third-party clients communicate with the ASE via the Open Payments APIs. A client communicates with the payment recipient's ASE to get payment addressing information. Then, the client communicates with the payer's ASE to get permission to initiate a payment om the payer's behalf and to provide the ASE with details about the payment.
+
+Open Payments-enabled ASEs also assign each of their customers' payment accounts a wallet address. A wallet address is similar to an email address and helps third-party clients discover the details necessary for setting up a payment. 
+
+<StylishHeader>Web Monetization</StylishHeader>
+
+Both the sender (payer) and the recipient of a Web Monetization payment must have an account with an ASE that has implemented Open Payments. By implementing Open Payments and Interledger (discussed in the last section), the ASE can support Web Monetization payments. 
+
+The sender of a Web Monetization payment must also use a client that is capable of calling the Open Payments APIs in order to communicate with the sender's and recipient's ASEs.
+
+## Wallet addresses
+
+Similar to how an email address is a publicly shareable ID for an email account, a wallet address is a publicly shareable ID for a payment account. Each wallet address is a secure, unique URL that represents an Open Payments-enabled account and is assigned to the account by the ASE. 
+
+Each wallet address provides an entry point to the Open Payments APIs, allowing a user's third-party client to get the details it needs to set up a payment.
+
+<StylishHeader>Web Monetization</StylishHeader>
+
+Both the sender and receiver of a Web Monetization payment have a wallet address. 
+
+The sender's wallet address is stored within their Web Monetization configuration software. The recipient's wallet address is part of their [website's code](#web-monetized-site).
+
+When the sender visits the recipient's web monetized site, their Web Monetization configuration software and their Web Monetization agent work together to identify the recipient's wallet address and make the Open Payment API calls necessary for setting up a payment. 
+
+## Web Monetization configuration software 
+
+Web Monetization configuration software provides the sender with a UI to enable and configure Web Monetization payment settings, such as amounts and frequencies.
+
+:::note[Payment amounts and frequencies]
+The sender is in complete control over the amounts and frequencies of their payments. Payments are only sent with the sender's permission.
+:::
+
+The configuration software is added to the sender's web browser as a browser extension. The sender links the software to their Open Payments-enabled account, which gives the software permission to initiate payments on the sender's behalf. Depending on how the sender chooses to configure the software, payments could be made automatically each time the sender visits a web monetized site. 
+
+The <mark>Interledger Foundation's Web Monetization extension</mark> is an example of a third-party application that:
+* Is a browser extension 
+* Provides the sender with a UI to enable and configure Web Monetization payments 
+* Can call the Open Payments APIs
+* Contains a Web Monetization agent 
+
+## Web Monetization agent
+
+A Web Monetization agent is a piece of backend software that acts on behalf of both the sender and the recipient of a payment.
+
+The responsibilities of the Web Monetization agent include:
+* Recognizing when the sender visits a web monetized site
+* Calling the Open Payments APIs to set up a payment
+* Alerting a site when there's a successful payment so the site can programmatically respond (for example, display a thank you message)
+
+The Interledger Foundation's Web Monetization extension has a Web Monetization agent built into it. If that weren't the case, the sender would have to install a separate piece of software specifically for the Web Monetization agent or use a browser that already has a Web Monetization agent built into it. 
+
+## Web monetized site 
+
+For a recipient to receive a Web Monetization payment, they must first have a wallet address provided by their Open Payments-enabled ASE. Then, they must add the wallet address to each page of their site that they want to monetize.
+
+When the sender visits a web monetized site, their software identifies the wallet address, then uses the address to begin setting up a payment based on the amount and frequency specified by the sender. 
+
+:::note[Payment amounts and frequencies]
+Web Monetization does not allow the recipient to dictate payment requirements, such as how much to receive and how often. These decisions lie solely with the sender. 
+:::
+
+## Setting up vs making a payment
+
+Until now, this page has described how Web Monetization payments are set up using Open Payments. Setting up a payment is similar to taking an item to the checkout counter at a store. When you do this, you're indicating that you're aware of how much the item costs and are ready to pay. The next step is to make the payment by giving the clerk your payment method, such as cash or a credit card. 
+
+<StylishHeader>Interledger</StylishHeader>
+
+In the context of Web Monetization and Open Payments, Interledger is a payment method, like cash or credit card. However, instead of the sender presenting a payment method, the ASE presents the payment method. 
+
+Interledger is the only payment method that has currently integrated with Open Payments. For an ASE to use Open Payments, they must also implement Interledger. When you obtain a wallet address from an Open Payments-enabled ASE and send or receive a Web Monetization payment, the ASE is using Interledger to send and receive the payment. 
+
+<StylishHeader>Settlement</StylishHeader>
+
+Interledger payments don't represent the actual movement of money. Instead, they're more like an IOU from one ASE to another. The payer's ASE:
+* Tells the recipient's ASE to credit the recipient's account with the payment amount
+* Promises to deliver actual funds to the recipient's ASE at an agreed-upon time
+
+By accepting the IOU, the recipient's ASE is indicating they will credit the recipient's account, making the funds available to the recipient. 
+
+Settlement occurs when the payer's ASE fulfills the IOU by delivering the promised funds. How and when ASEs choose to settle with one another depends on a number of factors, all of which are outside of the Web Monetization and Interledger technologies. 
